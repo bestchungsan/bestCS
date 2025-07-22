@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 
 interface FormData {
   // 의뢰인 정보
@@ -93,22 +94,87 @@ export default function RequestPage() {
     setSubmitStatus("idle");
 
     try {
-      // API로 이메일 전송
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // EmailJS 초기화
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
 
-      const result = await response.json();
+      // 미납 항목 번역
+      const translateUnpaidDetail = (detail: string): string => {
+        const details: Record<string, string> = {
+          management_fee: '일반관리비',
+          repair_fund: '수선충당금',
+          utility_fee: '전기료',
+          late_fee: '연체료',
+          special_fee: '특별징수금',
+          other: '기타',
+        };
+        return details[detail] || detail;
+      };
 
-      if (result.success) {
+      // 의뢰인 구분 번역
+      const translateClientType = (type: string): string => {
+        const types: Record<string, string> = {
+          management_office: '관리사무소',
+          management_committee: '관리위원회',
+          management_company: '위탁관리회사',
+          individual: '개인',
+        };
+        return types[type] || type;
+      };
+
+      // 기존 추심 시도 번역
+      const translatePreviousAttempts = (attempt: string): string => {
+        const attempts: Record<string, string> = {
+          none: '없음',
+          phone: '전화연락',
+          letter: '우편발송',
+          visit: '방문',
+          legal: '법적조치',
+          multiple: '복합시도',
+        };
+        return attempts[attempt] || attempt;
+      };
+
+      // EmailJS로 전송할 데이터 준비
+      const templateParams = {
+        // 의뢰인 정보
+        clientName: formData.clientName,
+        clientPhone: formData.clientPhone,
+        clientEmail: formData.clientEmail,
+        apartmentName: formData.apartmentName,
+        clientType: translateClientType(formData.clientType),
+        clientPosition: formData.clientPosition || '미입력',
+        
+        // 채무자 정보
+        debtorName: formData.debtorName,
+        debtorUnit: formData.debtorUnit,
+        debtorPhone: formData.debtorPhone || '미입력',
+        
+        // 미납 관리비 정보
+        unpaidPeriod: formData.unpaidPeriod,
+        unpaidAmount: parseInt(formData.unpaidAmount).toLocaleString(),
+        unpaidDetails: formData.unpaidDetails.map(item => translateUnpaidDetail(item)).join(', '),
+        
+        // 기타 정보
+        previousAttempts: translatePreviousAttempts(formData.previousAttempts),
+        specialNotes: formData.specialNotes || '없음',
+        hasDocuments: formData.hasDocuments ? '있음' : '없음',
+        
+        // 접수 정보
+        submittedAt: new Date().toLocaleString('ko-KR'),
+      };
+
+      // EmailJS로 이메일 전송
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        templateParams
+      );
+
+      if (response.status === 200) {
         setSubmitStatus("success");
         setFormData(initialFormData);
       } else {
-        throw new Error(result.message || '전송 실패');
+        throw new Error('전송 실패');
       }
     } catch (error) {
       console.error("이메일 전송 실패:", error);
