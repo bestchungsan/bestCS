@@ -669,7 +669,7 @@ export default function Home() {
                 >
                   법률 상담
                 </h4>
-
+                {/* 법률 상담 카드 */}
                 <div className="space-y-4">
                   <div
                     className={`animate-item flex items-start gap-4 p-4 bg-blue-50 rounded-xl transition-all duration-700 ${
@@ -1089,7 +1089,7 @@ export default function Home() {
             <button className="bg-yellow-400 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform">
               <span>💬</span> 카카오톡으로 상담하기
             </button>
-            <Link 
+            <Link
               href="/request"
               className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform"
             >
