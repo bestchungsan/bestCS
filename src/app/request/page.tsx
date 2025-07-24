@@ -367,9 +367,11 @@ export default function RequestPage() {
                     value={formData.clientType}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                      formData.clientType === "" ? "text-gray-500" : "text-gray-900"
+                    }`}
                   >
-                    <option value="">선택해주세요</option>
+                    <option value="" className="text-gray-500">선택해주세요</option>
                     <option value="management_office">관리사무소</option>
                     <option value="management_committee">관리조합</option>
                     <option value="management_company">관리회사</option>
