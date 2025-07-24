@@ -133,15 +133,8 @@ export default function RequestPage() {
         clientName: formData.clientName,
         clientPhone: formData.clientPhone,
         clientEmail: formData.clientEmail,
-        email: formData.clientEmail, // EmailJS 템플릿 호환성을 위해 추가
         apartmentName: formData.apartmentName,
         clientType: translateClientType(formData.clientType),
-        clientPosition: "", // 기존 템플릿 호환성을 위해 빈 값
-
-        // 채무자 정보 (기존 템플릿 호환성을 위해 빈 값)
-        debtorName: "",
-        debtorUnit: "",
-        debtorPhone: "",
 
         // 미납 관리비 정보
         unpaidPeriod: formData.unpaidPeriod,
@@ -149,11 +142,6 @@ export default function RequestPage() {
         unpaidDetails: formData.unpaidDetails
           .map((item) => translateUnpaidDetail(item))
           .join(", "),
-
-        // 기타 정보 (기존 템플릿 호환성을 위해 빈 값)
-        previousAttempts: "",
-        specialNotes: "",
-        hasDocuments: "",
 
         // 접수 정보
         submittedAt: new Date().toLocaleString("ko-KR"),
@@ -308,7 +296,7 @@ export default function RequestPage() {
                     value={formData.clientName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     placeholder="홍길동"
                   />
                 </div>
@@ -323,7 +311,7 @@ export default function RequestPage() {
                     value={formData.clientPhone}
                     onChange={handlePhoneChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     placeholder="010-1234-5678"
                   />
                 </div>
@@ -338,7 +326,7 @@ export default function RequestPage() {
                     value={formData.clientEmail}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     placeholder="example@email.com"
                   />
                 </div>
@@ -353,7 +341,7 @@ export default function RequestPage() {
                     value={formData.apartmentName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     placeholder="○○아파트"
                   />
                 </div>
@@ -401,7 +389,7 @@ export default function RequestPage() {
                     value={formData.unpaidPeriod}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     placeholder="2023년 1월 ~ 2024년 12월"
                   />
                   <p className="text-sm text-gray-500 mt-1">
@@ -419,7 +407,7 @@ export default function RequestPage() {
                     value={formData.unpaidAmount}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     placeholder="1,000,000원"
                   />
                   <p className="text-sm text-gray-500 mt-1">

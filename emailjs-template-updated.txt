@@ -1,0 +1,18 @@
+To: your-email@example.com (관리자 이메일)
+Reply To: {{clientEmail}}
+Subject: 새로운 관리비 추심 의뢰 - {{clientName}}
+
+내용:
+===== 의뢰인 정보 =====
+이름: {{clientName}}
+연락처: {{clientPhone}}
+이메일: {{clientEmail}}
+아파트명: {{apartmentName}}
+구분: {{clientType}}
+
+===== 미납 정보 =====
+기간: {{unpaidPeriod}}
+금액: {{unpaidAmount}}원
+내역: {{unpaidDetails}}
+
+접수 시간: {{submittedAt}}

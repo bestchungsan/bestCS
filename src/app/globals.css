@@ -71,3 +71,19 @@ body,
 select option[value=""] {
   color: #6b7280;
 }
+
+/* Input 텍스트 색상 */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  color: #111827; /* text-gray-900 */
+}
+
+/* 입력된 값이 있을 때 검은색 유지 */
+input:not(:placeholder-shown),
+select:not([value=""]),
+textarea:not(:placeholder-shown) {
+  color: #111827; /* text-gray-900 */
+}
