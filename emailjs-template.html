@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리비 추심 의뢰서</title>
+</head>
+<body style="font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="background-color: #f8f9fa; border-radius: 10px; padding: 30px; margin-bottom: 20px;">
+        <h1 style="color: #1e40af; margin: 0 0 10px 0; font-size: 28px;">새로운 관리비 추심 의뢰</h1>
+        <p style="color: #6b7280; margin: 0;">{{submittedAt}} 접수</p>
+    </div>
+
+    <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 30px; margin-bottom: 20px;">
+        <h2 style="color: #1f2937; font-size: 20px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e5e7eb;">
+            📋 의뢰인 정보
+        </h2>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280; width: 30%;">이름</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{clientName}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280;">연락처</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{clientPhone}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280;">이메일</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{clientEmail}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280;">아파트/단지명</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{apartmentName}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280;">의뢰인 구분</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{clientType}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 30px; margin-bottom: 20px;">
+        <h2 style="color: #1f2937; font-size: 20px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e5e7eb;">
+            💰 미납 관리비 정보
+        </h2>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280; width: 30%;">미납 기간</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{unpaidPeriod}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280;">미납 금액</td>
+                <td style="padding: 10px 0; color: #dc2626; font-weight: 700; font-size: 18px;">{{unpaidAmount}}원</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 0; color: #6b7280; vertical-align: top;">미납 내역</td>
+                <td style="padding: 10px 0; color: #1f2937; font-weight: 500;">{{unpaidDetails}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="background-color: #eff6ff; border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px;">
+        <p style="color: #1e40af; margin: 0; font-weight: 500;">
+            ✅ 개인정보 수집·이용에 동의하였습니다.
+        </p>
+    </div>
+
+    <div style="background-color: #f3f4f6; border-radius: 10px; padding: 20px; text-align: center;">
+        <p style="color: #6b7280; margin: 0 0 10px 0; font-size: 14px;">
+            이 의뢰서는 베스트청산 관리비 추심 서비스를 통해 제출되었습니다.
+        </p>
+        <p style="color: #6b7280; margin: 0; font-size: 14px;">
+            문의: 031-313-9990 | <a href="https://bestchungsan.com" style="color: #1e40af;">bestchungsan.com</a>
+        </p>
+    </div>
+</body>
+</html>

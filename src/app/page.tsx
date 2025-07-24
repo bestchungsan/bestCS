@@ -180,7 +180,7 @@ export default function Home() {
         {/* <div className="absolute inset-0 bg-black bg-opacity-30 z-10" /> */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-white text-lg font-semibold mb-4">
-            <span className="text-yellow-300">빠르고 확실한</span> 관리비추심
+            빠르고 확실한 관리비추심
           </p>
           <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             밀린 관리비
@@ -188,11 +188,10 @@ export default function Home() {
             <span className="text-white">내 돈은 당연히 받아야 합니다</span>
           </h2>
           <p className="text-lg text-white max-w-2xl mx-auto">
-            추심은 <span className="text-yellow-300">전문가</span>에게 맡겨야
-            합니다.
+            추심은 전문가에게 맡겨야 합니다.
           </p>
           <p className="text-lg text-white mb-8 max-w-2xl mx-auto">
-            이제 관리비컨설팅이 당신의 채권을 추심해드립니다
+            이제 베스트청산이 당신의 채권을 추심해드립니다
           </p>
           <div
             ref={heroRef}
@@ -359,54 +358,58 @@ export default function Home() {
             이어갑니다.
           </p>
 
+          {/* 채권의 소멸시효 카드 */}
           <div
             ref={extinctionRef}
-            className={`grid grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto transition-all duration-1000 ${
+            className={`bg-white rounded-2xl shadow-lg border border-gray-100 p-6 max-w-xl mx-auto transition-all duration-1000 ${
               extinctionVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           >
-            {/* 3년차 카드 */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 text-center flex flex-col">
-              <div className="inline-flex items-center justify-center bg-orange-100 rounded-lg px-4 py-2 mb-4 mx-auto">
-                <span className="text-orange-600 text-lg md:text-xl font-bold">
-                  3년차
-                </span>
-              </div>
-              <div className="flex-1 flex flex-col justify-center space-y-2">
-                <p className="text-sm md:text-base text-gray-700">
-                  임금, 퇴직금
-                </p>
-                <p className="text-sm md:text-base text-gray-700">임대료</p>
-                <p className="text-sm md:text-base text-gray-700 ">관리비</p>
-                <p className="text-sm md:text-base text-gray-700">공사대금</p>
-                <p className="text-sm md:text-base text-gray-700">약속어음</p>
-              </div>
+            <div className="flex flex-col items-center mb-10">
+              <span className="text-3xl mb-3">⚠️</span>
+              <h4 className="text-xl font-bold text-gray-900">
+                채권의 소멸시효
+              </h4>
             </div>
 
-            {/* 10년차 카드 */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 text-center flex flex-col">
-              <div className="inline-flex items-center justify-center bg-blue-100 rounded-lg px-4 py-2 mb-4 mx-auto">
-                <span className="text-blue-600 text-lg md:text-xl font-bold">
-                  10년차
-                </span>
+            <div className="grid grid-cols-2 gap-6">
+              {/* 3년차 */}
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center bg-orange-100 rounded-lg px-4 py-2 mb-4">
+                  <span className="text-orange-600 text-lg font-bold">
+                    3년차
+                  </span>
+                </div>
+                <div className="space-y-1 text-gray-700 text-md">
+                  <p>임금, 퇴직금</p>
+                  <p>임대료</p>
+                  <p>관리비</p>
+                  <p>공사대금</p>
+                  <p>약속어음</p>
+                </div>
               </div>
-              <div className="flex-1 flex flex-col justify-center space-y-2">
-                <p className="text-sm md:text-base text-gray-700">민사채권</p>
-                <p className="text-sm md:text-base text-gray-700">판결문</p>
-                <p className="text-xs md:text-sm text-gray-500 mt-4">
-                  일반적인 금전채권 및<br />
-                  법원 판결에 의한 채권
-                </p>
+
+              {/* 10년차 */}
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center bg-blue-100 rounded-lg px-4 py-2 mb-4">
+                  <span className="text-blue-600 text-lg font-bold">
+                    10년차
+                  </span>
+                </div>
+                <div className="space-y-1 text-gray-700 text-md">
+                  <p>민사채권</p>
+                  <p>판결문</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="bg-gray-50 rounded-lg p-6 mt-8 max-w-2xl mx-auto">
             <p className="text-gray-700 text-center leading-relaxed">
-              <span className="font-semibold">관리비컨설팅</span>은 판결의
-              시효나 소멸시효까지 놓치지 않도록 챙겨드립니다.
+              <span className="">베스트청산</span>은 판결의 시효나 소멸시효까지
+              놓치지 않도록 챙겨드립니다.
             </p>
           </div>
         </div>
@@ -426,13 +429,12 @@ export default function Home() {
               미칩니다.
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
-              관리비는 단순한 관리비용이 아니라,{" "}
-              <span className="text-gray-600">
-                공동전기료·수도료 등 공과금 성격
-              </span>
-              도 포함됩니다. 미납을 방치할 경우{" "}
-              <span className="text-gray-600">공용 전기·수도 단절</span> 등
-              직접적 피해로 이어질 수 있으므로 반드시 적시에 정리하셔야 합니다.
+              관리비는 단순한 관리비용이 아니라, 공동전기료·수도료 등 공과금도
+              포함됩니다.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
+              미납을 방치할 경우 공용 전기·수도 단절 등 직접적 피해로 이어질 수
+              있으므로 반드시 적시에 정리하셔야 합니다.
             </p>
           </div>
 
@@ -599,10 +601,10 @@ export default function Home() {
       <section id="service" className="pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
               미납 관리비가 있다면,
               <br />
-              <span className="text-blue-600">바로 추심이 가능</span>합니다
+              <span className="text-gray-700">바로 추심이 가능</span>합니다
             </h3>
           </div>
 
@@ -678,10 +680,10 @@ export default function Home() {
               />
             </div>
             <div className="relative z-20 max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 leading-tight">
-                관리비컨설팅에서
+              <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-8 leading-tight">
+                베스트청산에서
                 <br />
-                <span className="text-yellow-300">원스톱</span>으로 진합하세요
+                <span className="">원스톱</span>으로 진합하세요
               </h3>
               <p className="text-center text-white mb-8 max-w-4xl mx-auto leading-relaxed text-base md:text-lg">
                 필요한 법적 절차 지원과 납부 안내를 원스톱으로 지원합니다.
@@ -1187,7 +1189,7 @@ export default function Home() {
             </div>
             <div>
               <h5 className="text-lg font-semibold mb-4 leading-tight text-white">
-                관리비컨설팅 고객센터
+                베스트청산 고객센터
               </h5>
               <div className="text-gray-400 leading-relaxed">
                 <p className="text-2xl font-bold text-white mb-2">
@@ -1198,7 +1200,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 관리비컨설팅. All rights reserved.</p>
+            <p>&copy; 2024 베스트청산. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -131,11 +131,22 @@ export default function RequestPage() {
         email: formData.clientEmail, // EmailJS 템플릿 호환성을 위해 추가
         apartmentName: formData.apartmentName,
         clientType: translateClientType(formData.clientType),
+        clientPosition: '', // 기존 템플릿 호환성을 위해 빈 값
+        
+        // 채무자 정보 (기존 템플릿 호환성을 위해 빈 값)
+        debtorName: '',
+        debtorUnit: '',
+        debtorPhone: '',
         
         // 미납 관리비 정보
         unpaidPeriod: formData.unpaidPeriod,
         unpaidAmount: parseInt(formData.unpaidAmount).toLocaleString(),
         unpaidDetails: formData.unpaidDetails.map(item => translateUnpaidDetail(item)).join(', '),
+        
+        // 기타 정보 (기존 템플릿 호환성을 위해 빈 값)
+        previousAttempts: '',
+        specialNotes: '',
+        hasDocuments: '',
         
         // 접수 정보
         submittedAt: new Date().toLocaleString('ko-KR'),

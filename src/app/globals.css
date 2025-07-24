@@ -40,3 +40,29 @@ body,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
 }
+
+/* Placeholder 스타일 개선 */
+::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+::-webkit-input-placeholder { /* Edge/WebKit */
+  color: #6b7280;
+  opacity: 1;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: #6b7280;
+  opacity: 1;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: #6b7280;
+  opacity: 1;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #6b7280;
+  opacity: 1;
+}
