@@ -367,16 +367,16 @@ export default function Home() {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="flex flex-col items-center mb-10">
+            <div className="flex flex-col items-center mb-6">
               <span className="text-3xl mb-3">⚠️</span>
               <h4 className="text-xl font-bold text-gray-900">
                 채권의 소멸시효
               </h4>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              {/* 3년차 */}
-              <div className="text-center">
+            <div className="grid grid-cols-2 gap-4">
+              {/* 3년차 카드 */}
+              <div className="bg-gray-50 rounded-xl px-4 py-6 text-center">
                 <div className="inline-flex items-center justify-center bg-orange-100 rounded-lg px-4 py-2 mb-4">
                   <span className="text-orange-600 text-lg font-bold">
                     3년차
@@ -391,8 +391,8 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* 10년차 */}
-              <div className="text-center">
+              {/* 10년차 카드 */}
+              <div className="bg-gray-50 rounded-xl px-4 py-6 text-center">
                 <div className="inline-flex items-center justify-center bg-blue-100 rounded-lg px-4 py-2 mb-4">
                   <span className="text-blue-600 text-lg font-bold">
                     10년차
@@ -401,6 +401,10 @@ export default function Home() {
                 <div className="space-y-1 text-gray-700 text-md">
                   <p>민사채권</p>
                   <p>판결문</p>
+                  <p className="text-sm text-gray-500 mt-3">
+                    일반적인 금전채권 및<br />
+                    법원 판결에 의한 채권
+                  </p>
                 </div>
               </div>
             </div>
