@@ -75,7 +75,8 @@ export default function Home() {
   const [heroRef, heroVisible] = useScrollAnimation();
   const [goldTimeRef, goldTimeVisible] = useScrollAnimation();
   const [extinctionRef, extinctionVisible] = useScrollAnimation();
-  const [damageRef, damageVisible] = useScrollAnimation();
+  const [damageCardsRef, damageCardsVisible] = useItemAnimation();
+  const [serviceCardsRef, serviceCardsVisible] = useItemAnimation();
   const [consultRef, consultItemsVisible] = useItemAnimation();
   const [faqRef, faqItemsVisible] = useItemAnimation();
   const [ctaRef, ctaVisible] = useScrollAnimation();
@@ -179,15 +180,16 @@ export default function Home() {
         {/* <div className="absolute inset-0 bg-black bg-opacity-30 z-10" /> */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-white text-lg font-semibold mb-4">
-            빠르고 확실한 관리비추심
+            <span className="text-yellow-300">빠르고 확실한</span> 관리비추심
           </p>
-          <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             밀린 관리비
             <br />
             <span className="text-white">내 돈은 당연히 받아야 합니다</span>
           </h2>
           <p className="text-lg text-white max-w-2xl mx-auto">
-            추심은 전문가에게 맡겨야 합니다.
+            추심은 <span className="text-yellow-300">전문가</span>에게 맡겨야
+            합니다.
           </p>
           <p className="text-lg text-white mb-8 max-w-2xl mx-auto">
             이제 관리비컨설팅이 당신의 채권을 추심해드립니다
@@ -221,12 +223,13 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-600 text-lg font-semibold mb-4">
-            골든타임을 놓치지 마세요
+            <span className="text-blue-600">골든타임</span>을 놓치지 마세요
           </p>
-          <h3 className="text-4xl font-bold text-gray-900 mb-12 leading-tight">
-            법적조치와 추심활동이
+          <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-12 leading-tight">
+            <span className="text-black">법적조치</span>와{" "}
+            <span className="text-black">추심활동</span>이
             <br />
-            유기적으로 융합되어야 합니다
+            <span className="text-black-">유기적으로 융합</span>되어야 합니다
           </h3>
 
           <div
@@ -234,15 +237,15 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left"
           >
             <div
-              className={`flex items-start gap-4 bg-gray-50 p-6 rounded-xl transition-all duration-700 delay-200 ${
+              className={`flex items-start gap-4 bg-white p-6 rounded-xl shadow-lg transition-all duration-700 delay-200 ${
                 goldTimeVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <div className="bg-gray-200 rounded-full p-2 flex-shrink-0 mt-1">
+              <div className="bg-blue-100 rounded-full p-2 flex-shrink-0 mt-1">
                 <svg
-                  className="w-4 h-4 text-gray-600"
+                  className="w-4 h-4 text-blue-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -259,15 +262,15 @@ export default function Home() {
             </div>
 
             <div
-              className={`flex items-start gap-4 bg-gray-50 p-6 rounded-xl transition-all duration-700 delay-400 ${
+              className={`flex items-start gap-4 bg-white p-6 rounded-xl shadow-lg transition-all duration-700 delay-400 ${
                 goldTimeVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <div className="bg-gray-200 rounded-full p-2 flex-shrink-0 mt-1">
+              <div className="bg-blue-100 rounded-full p-2 flex-shrink-0 mt-1">
                 <svg
-                  className="w-4 h-4 text-gray-600"
+                  className="w-4 h-4 text-blue-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -285,15 +288,15 @@ export default function Home() {
             </div>
 
             <div
-              className={`flex items-start gap-4 bg-gray-50 p-6 rounded-xl transition-all duration-700 delay-600 ${
+              className={`flex items-start gap-4 bg-white p-6 rounded-xl shadow-lg transition-all duration-700 delay-600 ${
                 goldTimeVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <div className="bg-gray-200 rounded-full p-2 flex-shrink-0 mt-1">
+              <div className="bg-blue-100 rounded-full p-2 flex-shrink-0 mt-1">
                 <svg
-                  className="w-4 h-4 text-gray-600"
+                  className="w-4 h-4 text-blue-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -311,15 +314,15 @@ export default function Home() {
             </div>
 
             <div
-              className={`flex items-start gap-4 bg-gray-50 p-6 rounded-xl transition-all duration-700 delay-800 ${
+              className={`flex items-start gap-4 bg-white p-6 rounded-xl shadow-lg transition-all duration-700 delay-800 ${
                 goldTimeVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <div className="bg-gray-200 rounded-full p-2 flex-shrink-0 mt-1">
+              <div className="bg-blue-100 rounded-full p-2 flex-shrink-0 mt-1">
                 <svg
-                  className="w-4 h-4 text-gray-600"
+                  className="w-4 h-4 text-blue-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -345,10 +348,11 @@ export default function Home() {
           <p className="text-gray-600 text-lg font-semibold mb-4">
             채권은 일정시간이 지나면 소멸됩니다
           </p>
-          <h3 className="text-4xl font-bold text-gray-900 mb-8 leading-tight">
-            체계적이고 정당한 방법으로
+          <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
+            <span className="text-blue-600">체계적</span>이고{" "}
+            <span className="text-blue-600">정당한 방법</span>으로
             <br />
-            관리 및 법적 절차 진행합니다
+            관리 및 법적 절차를 진행합니다
           </h3>
           <p className="text-lg text-gray-600 mb-12 leading-relaxed">
             전문가가 채무자의 상황을 파악해 법적 절차 지원과 납부 안내를
@@ -357,34 +361,53 @@ export default function Home() {
 
           <div
             ref={extinctionRef}
-            className={`bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto transition-all duration-1000 ${
+            className={`grid grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto transition-all duration-1000 ${
               extinctionVisible
-                ? "opacity-100 translate-y-0 scale-100"
-                : "opacity-0 translate-y-10 scale-95"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="flex items-center justify-center mb-3">
-              <span className="text-gray-600 text-3xl">⚠️</span>
+            {/* 3년차 카드 */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 text-center flex flex-col">
+              <div className="inline-flex items-center justify-center bg-orange-100 rounded-lg px-4 py-2 mb-4 mx-auto">
+                <span className="text-orange-600 text-lg md:text-xl font-bold">
+                  3년차
+                </span>
+              </div>
+              <div className="flex-1 flex flex-col justify-center space-y-2">
+                <p className="text-sm md:text-base text-gray-700">
+                  임금, 퇴직금
+                </p>
+                <p className="text-sm md:text-base text-gray-700">임대료</p>
+                <p className="text-sm md:text-base text-gray-700 ">관리비</p>
+                <p className="text-sm md:text-base text-gray-700">공사대금</p>
+                <p className="text-sm md:text-base text-gray-700">약속어음</p>
+              </div>
             </div>
-            <h4 className="text-xl font-bold text-gray-900 mb-6">
-              채권의 소멸시효
-            </h4>
-            <div className="space-y-3 text-left">
-              <p className="text-gray-700 leading-relaxed">
-                <span className="font-semibold text-gray-900">3년차:</span>{" "}
-                임금, 퇴직금, 임대료, 관리비, 공사대금, 약속어음
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                <span className="font-semibold text-gray-900">10년차:</span>{" "}
-                민사채권, 판결문
-              </p>
+
+            {/* 10년차 카드 */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 text-center flex flex-col">
+              <div className="inline-flex items-center justify-center bg-blue-100 rounded-lg px-4 py-2 mb-4 mx-auto">
+                <span className="text-blue-600 text-lg md:text-xl font-bold">
+                  10년차
+                </span>
+              </div>
+              <div className="flex-1 flex flex-col justify-center space-y-2">
+                <p className="text-sm md:text-base text-gray-700">민사채권</p>
+                <p className="text-sm md:text-base text-gray-700">판결문</p>
+                <p className="text-xs md:text-sm text-gray-500 mt-4">
+                  일반적인 금전채권 및<br />
+                  법원 판결에 의한 채권
+                </p>
+              </div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4 mt-6">
-              <p className="text-gray-700 text-sm leading-relaxed">
-                관리비컨설팅은 판결의 시효나 소멸시효까지 놓치지 않도록
-                챙겨드립니다.
-              </p>
-            </div>
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-6 mt-8 max-w-2xl mx-auto">
+            <p className="text-gray-700 text-center leading-relaxed">
+              <span className="font-semibold">관리비컨설팅</span>은 판결의
+              시효나 소멸시효까지 놓치지 않도록 챙겨드립니다.
+            </p>
           </div>
         </div>
       </section>
@@ -392,43 +415,35 @@ export default function Home() {
       {/* 미납관리비 심각성 섹션 */}
       <section id="why-need" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={damageRef} className="text-center mb-16">
-            <h3
-              className={`text-4xl font-bold text-gray-900 mb-4 leading-tight transition-all duration-1000 ${
-                damageVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              미납관리비를 방치하면
-              <br />
-              <span className="text-blue-600">이런 손해가 발생합니다</span>
-            </h3>
-            <p
-              className={`text-xl text-gray-600 leading-relaxed transition-all duration-1000 delay-300 ${
-                damageVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              단순히 돈을 못 받는 것이 아닙니다. 관리단 전체에 중대한 영향을
-              미칩니다.
+          <div className="text-center mb-16">
+            <p className="text-gray-600 text-lg font-semibold mb-4">
+              미납관리비를 방치하면 이런 손해가 발생합니다
             </p>
-            <p
-              className={`text-lg text-gray-600 mt-4 leading-relaxed max-w-4xl mx-auto transition-all duration-1000 delay-600 ${
-                damageVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              관리비는 단순한 관리비용이 아니라, 공동전기료·수도료 등 공과금
-              성격도 포함됩니다. 미납을 방치할 경우 공용 전기·수도 단절 등
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
+              단순히 돈을 못 받는 것이 아닙니다.
+              <br />
+              관리단 전체에 <span className="text-blue-600">중대한 영향</span>을
+              미칩니다.
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
+              관리비는 단순한 관리비용이 아니라,{" "}
+              <span className="text-gray-600">
+                공동전기료·수도료 등 공과금 성격
+              </span>
+              도 포함됩니다. 미납을 방치할 경우{" "}
+              <span className="text-gray-600">공용 전기·수도 단절</span> 등
               직접적 피해로 이어질 수 있으므로 반드시 적시에 정리하셔야 합니다.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-gray-50 rounded-2xl p-8">
+          <div ref={damageCardsRef} className="grid md:grid-cols-2 gap-8 mb-16">
+            <div
+              className={`animate-item bg-gray-50 rounded-2xl p-8 transition-all duration-700 ${
+                damageCardsVisible[0]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="flex items-center mb-6">
                 <div className="pr-2">
                   <span className="text-gray-600 text-3xl">💰</span>
@@ -441,25 +456,34 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <span className="text-gray-500 font-bold">•</span>
                   <span className="leading-relaxed">
-                    공용시설 유지관리 예산 부족으로 시설 노후화 가속
+                    공용시설 유지관리 예산 부족으로{" "}
+                    <span className="text-gray-700">시설 노후화 가속</span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-500 font-bold">•</span>
                   <span className="leading-relaxed">
-                    장기수선충당금 적립 차질로 대형 수리 시 특별부담금 발생
+                    장기수선충당금 적립 차질로 대형 수리 시{" "}
+                    <span className="text-gray-700">특별부담금 발생</span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-500 font-bold">•</span>
                   <span className="leading-relaxed">
-                    성실 납부 세대에 부담 전가로 관리비 인상 압박
+                    성실 납부 세대에 부담 전가로{" "}
+                    <span className="text-gray-700">관리비 인상 압박</span>
                   </span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-gray-50 rounded-2xl p-8">
+            <div
+              className={`animate-item bg-gray-50 rounded-2xl p-8 transition-all duration-700 ${
+                damageCardsVisible[1]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="flex items-center mb-6">
                 <div className="pr-4">
                   <span className="text-gray-600 text-3xl">🏢</span>
@@ -490,7 +514,13 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 rounded-2xl p-8">
+            <div
+              className={`animate-item bg-gray-50 rounded-2xl p-8 transition-all duration-700 ${
+                damageCardsVisible[2]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="flex items-center mb-6">
                 <div className="pr-4">
                   <span className="text-gray-600 text-3xl">⚖️</span>
@@ -503,8 +533,9 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <span className="text-gray-500 font-bold">•</span>
                   <span className="leading-relaxed">
-                    집합건물법 제24조상 관리단의 채권 보전 의무 미이행 시 법적
-                    책임
+                    집합건물법 제24조상 관리단의{" "}
+                    <span className="text-gray-700">채권 보전 의무</span> 미이행
+                    시 <span className="text-gray-700">법적 책임</span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -522,7 +553,13 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 rounded-2xl p-8">
+            <div
+              className={`animate-item bg-gray-50 rounded-2xl p-8 transition-all duration-700 ${
+                damageCardsVisible[3]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="flex items-center mb-6">
                 <div className="pr-4">
                   <span className="text-gray-600 text-3xl">👥</span>
@@ -535,7 +572,8 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <span className="text-gray-500 font-bold">•</span>
                   <span className="leading-relaxed">
-                    도덕적 해이 확산으로 전체 납부율 저하
+                    <span className="text-gray-700">도덕적 해이 확산</span>으로
+                    전체 납부율 저하
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -547,7 +585,8 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <span className="text-gray-500 font-bold">•</span>
                   <span className="leading-relaxed">
-                    아파트 가치 하락으로 재산 손실 발생
+                    <span className="text-gray-700">아파트 가치 하락</span>으로
+                    재산 손실 발생
                   </span>
                 </li>
               </ul>
@@ -560,33 +599,60 @@ export default function Home() {
       <section id="service" className="pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
               미납 관리비가 있다면,
               <br />
-              바로 추심이 가능합니다
+              <span className="text-blue-600">바로 추심이 가능</span>합니다
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+          <div
+            ref={serviceCardsRef}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+          >
+            <div
+              className={`animate-item text-center p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-700 ${
+                serviceCardsVisible[0]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="text-4xl mb-4">📄</div>
               <h4 className="font-semibold text-gray-900 leading-relaxed">
                 관리비 고지서
               </h4>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+            <div
+              className={`animate-item text-center p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-700 ${
+                serviceCardsVisible[1]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="text-4xl mb-4">📋</div>
               <h4 className="font-semibold text-gray-900 leading-relaxed">
                 입주자 명부
               </h4>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+            <div
+              className={`animate-item text-center p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-700 ${
+                serviceCardsVisible[2]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="text-4xl mb-4">🏢</div>
               <h4 className="font-semibold text-gray-900 leading-relaxed">
                 관리규약
               </h4>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+            <div
+              className={`animate-item text-center p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-700 ${
+                serviceCardsVisible[3]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <div className="text-4xl mb-4">⚖️</div>
               <h4 className="font-semibold text-gray-900 leading-relaxed">
                 법적 근거
@@ -612,12 +678,12 @@ export default function Home() {
               />
             </div>
             <div className="relative z-20 max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-3xl font-bold text-center text-white mb-8 leading-tight">
+              <h3 className="text-2xl md:text-4xl font-bold text-center text-white mb-8 leading-tight">
                 관리비컨설팅에서
                 <br />
-                원스톱으로 진행하세요
+                <span className="text-yellow-300">원스톱</span>으로 진합하세요
               </h3>
-              <p className="text-center text-white mb-8 max-w-4xl mx-auto leading-relaxed text-lg">
+              <p className="text-center text-white mb-8 max-w-4xl mx-auto leading-relaxed text-base md:text-lg">
                 필요한 법적 절차 지원과 납부 안내를 원스톱으로 지원합니다.
                 <br />
                 원스톱으로 진행되지 않는다면, 따로따로 비용이 들며 골든타임을
@@ -693,7 +759,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">
-                        전문 법무팀 연계
+                        <span className="">전문 법무팀</span> 연계
                       </h5>
                       <p className="text-sm text-gray-600">
                         제휴 변호사를 통해 법률 상담을 지원합니다
@@ -723,7 +789,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">
-                        추심 가능성 판단
+                        <span className="">추심 가능성</span> 판단
                       </h5>
                       <p className="text-sm text-gray-600">
                         전문적 검토를 통한 회수 가능성 분석
@@ -852,7 +918,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">
-                        전문 상담팀 운영
+                        <span className="">전문 상담팀</span> 운영
                       </h5>
                       <p className="text-sm text-gray-600">
                         숙련된 전문가의 직접 입주자 연락 및 협상
@@ -942,7 +1008,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">
-                        강제집행 절차
+                        <span className="">강제집행</span> 절차
                       </h5>
                       <p className="text-sm text-gray-600">
                         필요시 신속한 법적 조치 및 강제집행 진행
@@ -960,7 +1026,7 @@ export default function Home() {
       <section id="faq" className="mt-20 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mt-20 pt-20 mb-16">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
               자주묻는질문
             </h3>
           </div>
@@ -1060,24 +1126,28 @@ export default function Home() {
           }`}
         >
           <h3
-            className={`text-3xl font-bold text-white mb-4 leading-tight transition-all duration-700 delay-200 ${
+            className={`text-2xl md:text-4xl font-bold text-white mb-4 leading-tight transition-all duration-700 delay-200 ${
               ctaVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           >
-            관리비 추심도 얼마든지 간편하고
+            관리비 추심도 얼마든지 <span className="text-yellow-300">간편</span>
+            하고
             <br />
-            합리적인 요금으로 진행할 수 있습니다
+            <span className="text-yellow-300">합리적인 요금</span>으로 진행할 수
+            있습니다
           </h3>
           <p
-            className={`text-xl text-blue-100 mb-8 leading-relaxed transition-all duration-700 delay-400 ${
+            className={`text-lg md:text-xl text-blue-100 mb-8 leading-relaxed transition-all duration-700 delay-400 ${
               ctaVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           >
-            전국 어디서나 • 전문가가 직접 처리 • 성공보수 방식
+            <span className="text-yellow-200">전국 어디서나</span> •{" "}
+            <span className="text-yellow-200">전문가가 직접 처리</span> •{" "}
+            <span className="text-yellow-200">성공보수 방식</span>
           </p>
           <div
             className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-600 ${

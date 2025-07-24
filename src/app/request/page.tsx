@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import emailjs from "@emailjs/browser";
@@ -12,22 +12,13 @@ interface FormData {
   clientEmail: string;
   apartmentName: string;
   clientType: string;
-  clientPosition: string;
-
-  // 채무자 정보
-  debtorName: string;
-  debtorUnit: string;
-  debtorPhone: string;
 
   // 미납 관리비 정보
   unpaidPeriod: string;
   unpaidAmount: string;
   unpaidDetails: string[];
 
-  // 기타 정보
-  previousAttempts: string;
-  specialNotes: string;
-  hasDocuments: boolean;
+  // 개인정보 동의
   privacyConsent: boolean;
 }
 
@@ -37,16 +28,9 @@ const initialFormData: FormData = {
   clientEmail: "",
   apartmentName: "",
   clientType: "",
-  clientPosition: "",
-  debtorName: "",
-  debtorUnit: "",
-  debtorPhone: "",
   unpaidPeriod: "",
   unpaidAmount: "",
   unpaidDetails: [],
-  previousAttempts: "",
-  specialNotes: "",
-  hasDocuments: false,
   privacyConsent: false,
 };
 
@@ -54,6 +38,16 @@ export default function RequestPage() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  // EmailJS 초기화
+  useEffect(() => {
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.error("EmailJS public key is not set");
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -94,8 +88,14 @@ export default function RequestPage() {
     setSubmitStatus("idle");
 
     try {
-      // EmailJS 초기화
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '');
+      // 환경 변수 확인
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      
+      if (!serviceId || !templateId) {
+        console.error("EmailJS 환경 변수가 설정되지 않았습니다.");
+        throw new Error("EmailJS configuration missing");
+      }
 
       // 미납 항목 번역
       const translateUnpaidDetail = (detail: string): string => {
@@ -121,18 +121,6 @@ export default function RequestPage() {
         return types[type] || type;
       };
 
-      // 기존 추심 시도 번역
-      const translatePreviousAttempts = (attempt: string): string => {
-        const attempts: Record<string, string> = {
-          none: '없음',
-          phone: '전화연락',
-          letter: '우편발송',
-          visit: '방문',
-          legal: '법적조치',
-          multiple: '복합시도',
-        };
-        return attempts[attempt] || attempt;
-      };
 
       // EmailJS로 전송할 데이터 준비
       const templateParams = {
@@ -140,33 +128,24 @@ export default function RequestPage() {
         clientName: formData.clientName,
         clientPhone: formData.clientPhone,
         clientEmail: formData.clientEmail,
+        email: formData.clientEmail, // EmailJS 템플릿 호환성을 위해 추가
         apartmentName: formData.apartmentName,
         clientType: translateClientType(formData.clientType),
-        clientPosition: formData.clientPosition || '미입력',
-        
-        // 채무자 정보
-        debtorName: formData.debtorName,
-        debtorUnit: formData.debtorUnit,
-        debtorPhone: formData.debtorPhone || '미입력',
         
         // 미납 관리비 정보
         unpaidPeriod: formData.unpaidPeriod,
         unpaidAmount: parseInt(formData.unpaidAmount).toLocaleString(),
         unpaidDetails: formData.unpaidDetails.map(item => translateUnpaidDetail(item)).join(', '),
         
-        // 기타 정보
-        previousAttempts: translatePreviousAttempts(formData.previousAttempts),
-        specialNotes: formData.specialNotes || '없음',
-        hasDocuments: formData.hasDocuments ? '있음' : '없음',
-        
         // 접수 정보
         submittedAt: new Date().toLocaleString('ko-KR'),
       };
 
       // EmailJS로 이메일 전송
+      console.log("Sending email with params:", templateParams);
       const response = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        serviceId,
+        templateId,
         templateParams
       );
 
@@ -178,6 +157,9 @@ export default function RequestPage() {
       }
     } catch (error) {
       console.error("이메일 전송 실패:", error);
+      if (error instanceof Error) {
+        console.error("Error message:", error.message);
+      }
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -353,80 +335,14 @@ export default function RequestPage() {
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    직책/직위
-                  </label>
-                  <input
-                    type="text"
-                    name="clientPosition"
-                    value={formData.clientPosition}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="관리소장, 조합장 등"
-                  />
-                </div>
               </div>
             </div>
 
-            {/* 채무자 정보 */}
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">2</span>
-                채무자 정보
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    채무자 이름 <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="debtorName"
-                    value={formData.debtorName}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="채무자 이름"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    동호수 <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="debtorUnit"
-                    value={formData.debtorUnit}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="101동 1001호"
-                  />
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    채무자 연락처 (알고 있는 경우)
-                  </label>
-                  <input
-                    type="tel"
-                    name="debtorPhone"
-                    value={formData.debtorPhone}
-                    onChange={handlePhoneChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="010-1234-5678"
-                  />
-                </div>
-              </div>
-            </div>
 
             {/* 미납 관리비 정보 */}
             <div className="bg-gray-50 rounded-xl p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">3</span>
+                <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">2</span>
                 미납 관리비 정보
               </h2>
               
@@ -444,6 +360,9 @@ export default function RequestPage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="2023년 1월 ~ 2024년 12월"
                   />
+                  <p className="text-sm text-gray-500 mt-1">
+                    *대략적인 정보만 작성 가능
+                  </p>
                 </div>
 
                 <div>
@@ -459,6 +378,9 @@ export default function RequestPage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="1,000,000원"
                   />
+                  <p className="text-sm text-gray-500 mt-1">
+                    *대략적인 정보만 작성 가능
+                  </p>
                 </div>
 
                 <div className="md:col-span-2">
@@ -491,64 +413,6 @@ export default function RequestPage() {
               </div>
             </div>
 
-            {/* 기타 정보 */}
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">4</span>
-                기타 정보
-              </h2>
-              
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    이전 독촉 시도 여부
-                  </label>
-                  <select
-                    name="previousAttempts"
-                    value={formData.previousAttempts}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">선택해주세요</option>
-                    <option value="none">없음</option>
-                    <option value="phone">전화 독촉</option>
-                    <option value="letter">우편 독촉</option>
-                    <option value="visit">방문 독촉</option>
-                    <option value="legal">법적 조치</option>
-                    <option value="multiple">복수 시도</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    특이사항 (채무자 상황, 추가 정보 등)
-                  </label>
-                  <textarea
-                    name="specialNotes"
-                    value={formData.specialNotes}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="추가로 알려주실 사항이 있으시면 입력해주세요..."
-                  />
-                </div>
-
-                <div>
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="hasDocuments"
-                      checked={formData.hasDocuments}
-                      onChange={handleInputChange}
-                      className="mr-3 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-700">
-                      관련 서류 보유 (관리비 고지서, 관리규약, 입주자 명부 등)
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
 
             {/* 개인정보 처리방침 동의 */}
             <div className="bg-blue-50 rounded-xl p-6">
