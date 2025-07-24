@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   authors: [{ name: "베스트청산" }],
   creator: "베스트청산",
   publisher: "베스트청산",
+  icons: {
+    icon: [
+      { url: '/logo2.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo2.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/logo2.png',
+    shortcut: '/logo2.png',
+  },
   robots: {
     index: true,
     follow: true,
@@ -98,9 +106,6 @@ export default function RootLayout({
         {/* Canonical URL */}
         <link rel="canonical" href="https://bestchungsan.com" />
 
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/logo.png" />
 
         {/* 추가 메타 태그 */}
         <meta name="geo.region" content="KR" />
