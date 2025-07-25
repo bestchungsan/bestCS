@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   verification: {
     google: "", // 구글 서치 콘솔 인증 코드 추가 시 사용
     other: {
-      "naver-site-verification": "", // 네이버 웹마스터 도구 인증 코드 추가 시 사용
+      "naver-site-verification": "d6a717a5156a68084094299840010230e1a797d6",
     },
   },
 };
@@ -106,6 +106,8 @@ export default function RootLayout({
         {/* Canonical URL */}
         <link rel="canonical" href="https://bestchungsan.com" />
 
+        {/* 네이버 사이트 인증 */}
+        <meta name="naver-site-verification" content="d6a717a5156a68084094299840010230e1a797d6" />
 
         {/* 추가 메타 태그 */}
         <meta name="geo.region" content="KR" />

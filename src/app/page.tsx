@@ -139,12 +139,6 @@ export default function Home() {
               </a>
             </nav>
             <div className="flex space-x-4">
-              <button
-                className="bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
-                aria-label="관리비 추심 상담 문의"
-              >
-                상담하기
-              </button>
               <Link
                 href="/request"
                 className="bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -685,15 +679,14 @@ export default function Home() {
             </div>
             <div className="relative z-20 max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-8 leading-tight">
-                베스트청산에서
+                복잡한 컨설팅, 베스트청산에서
                 <br />
-                <span className="">원스톱</span>으로 진합하세요
+                <span className="">원스톱</span>으로 간편하게!
               </h3>
               <p className="text-center text-white mb-8 max-w-4xl mx-auto leading-relaxed text-base md:text-lg">
                 필요한 법적 절차 지원과 납부 안내를 원스톱으로 지원합니다.
                 <br />
-                원스톱으로 진행되지 않는다면, 따로따로 비용이 들며 골든타임을
-                놓칠 수 있습니다.
+                관리비 채권 추심의 골든타임은 원스톱이 아니면 지킬 수 없습니다.
               </p>
             </div>
           </div>
