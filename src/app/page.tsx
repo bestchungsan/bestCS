@@ -90,8 +90,7 @@ export default function Home() {
             <div className="flex items-center cursor-pointer" onClick={() => {
               window.scrollTo({
                 top: 0,
-                behavior: 'smooth',
-                duration: 300
+                behavior: 'smooth'
               });
             }}>
               <Image
