@@ -87,7 +87,13 @@ export default function Home() {
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
+            <div className="flex items-center cursor-pointer" onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+                duration: 300
+              });
+            }}>
               <Image
                 src="/logo2.png"
                 alt="베스트청산 로고 - 관리비 추심 전문 컨설팅"
@@ -107,6 +113,20 @@ export default function Home() {
                 href="#service"
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 aria-label="관리비 추심 서비스 안내"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector('.py-20.bg-white');
+                  if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth',
+                      duration: 300
+                    });
+                  }
+                }}
               >
                 서비스안내
               </a>
@@ -114,13 +134,41 @@ export default function Home() {
                 href="#why-need"
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 aria-label="미납관리비 방치 시 손해"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('why-need');
+                  if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth',
+                      duration: 300
+                    });
+                  }
+                }}
               >
-                왜필요한가요
+                미납 손해
               </a>
               <a
                 href="#faq"
                 className="text-gray-700 hover:text-blue-600 transition-colors"
                 aria-label="자주 묻는 질문"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('faq');
+                  if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth',
+                      duration: 300
+                    });
+                  }
+                }}
               >
                 자주묻는질문
               </a>
@@ -130,9 +178,17 @@ export default function Home() {
                 aria-label="관리비 추심 상담 및 의뢰"
                 onClick={(e) => {
                   e.preventDefault();
-                  document
-                    .querySelector("footer")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                  const element = document.getElementById('cta');
+                  if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth',
+                      duration: 300
+                    });
+                  }
                 }}
               >
                 상담문의
@@ -195,15 +251,9 @@ export default function Home() {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <button
-              className="bg-yellow-400 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform"
-              aria-label="카카오톡으로 관리비 추심 상담하기"
-            >
-              <span>💬</span> 카카오톡으로 상담하기
-            </button>
             <Link
               href="/request"
-              className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform"
+              className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform"
               aria-label="지금 관리비 추심 의뢰하기"
             >
               <span>▶</span> 지금 관리비추심 의뢰하기
@@ -1115,7 +1165,7 @@ export default function Home() {
       </section>
 
       {/* CTA 섹션 */}
-      <section className="py-20 bg-blue-600">
+      <section id="cta" className="py-20 bg-blue-600">
         <div
           ref={ctaRef}
           className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1000 ${
@@ -1155,12 +1205,9 @@ export default function Home() {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <button className="bg-yellow-400 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform">
-              <span>💬</span> 카카오톡으로 상담하기
-            </button>
             <Link
               href="/request"
-              className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform"
+              className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 hover:scale-105 transform"
             >
               <span>▶</span> 지금 관리비추심 의뢰하기
             </Link>
