@@ -121,8 +121,7 @@ export default function Home() {
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({
                       top: offsetPosition,
-                      behavior: 'smooth',
-                      duration: 300
+                      behavior: 'smooth'
                     });
                   }
                 }}
@@ -142,8 +141,7 @@ export default function Home() {
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({
                       top: offsetPosition,
-                      behavior: 'smooth',
-                      duration: 300
+                      behavior: 'smooth'
                     });
                   }
                 }}
@@ -163,8 +161,7 @@ export default function Home() {
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({
                       top: offsetPosition,
-                      behavior: 'smooth',
-                      duration: 300
+                      behavior: 'smooth'
                     });
                   }
                 }}
@@ -184,8 +181,7 @@ export default function Home() {
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({
                       top: offsetPosition,
-                      behavior: 'smooth',
-                      duration: 300
+                      behavior: 'smooth'
                     });
                   }
                 }}
